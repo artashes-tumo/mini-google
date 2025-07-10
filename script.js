@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchBtn = document.getElementById('search');
   const input = document.querySelector('.search-box input');
   const resultContainer = document.querySelector('.result-container');
-  const loader = document.getElementById('loader');
+
 
   const prevBtn = document.getElementById('prevPage');
   const nextBtn = document.getElementById('nextPage');
@@ -56,14 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     currentQuery = query;
     currentPage = page;
-    loader.style.display = 'block';
+
 
     const url = `https://pixabay.com/api/?key=51175945-3a453382a3779e2c97686ca48&q=${encodeURIComponent(query)}&image_type=photo&per_page=12&page=${page}`;
 
     try {
       const response = await fetch(url);
       const data = await response.json();
-      loader.style.display = 'none';
 
       const filtered = data.hits.map(hit => ({
         image: hit.webformatURL,
