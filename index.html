@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mini Google</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico" />
+  <meta name="description" content="Mini Google – a simple image search tool using Pixabay API." />
+</head>
+<body>
+  <button id="toggle-theme" aria-label="Toggle theme">🌓</button>
+
+  <h2>
+    Welcome to Mini
+    <span class="google-word" aria-label="Google">
+      <span class="G">G</span>
+      <span class="o1">o</span>
+      <span class="o2">o</span>
+      <span class="g">g</span>
+      <span class="l">l</span>
+      <span class="e">e</span>
+    </span>
+  </h2>
+
+  <div class="search-box">
+    <input type="text" placeholder="Search..." aria-label="Search input" />
+    <button id="search" aria-label="Search">🔍</button>
+  </div>
+
+  <div class="pagination-controls">
+    <button id="prevPage" disabled>Prev</button>
+    <span id="pageNumber">Page 1</span>
+    <button id="nextPage">Next</button>
+  </div>
+
+  <div class="result-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
