@@ -49,27 +49,6 @@ h2 {
   justify-content: center;
 }
 
-.google-word {
-  display: inline-flex;
-  margin-left: 10px;
-  align-items: baseline;
-}
-
-.google-word span {
-  font-weight: bold;
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  line-height: 1;
-  transition: transform 0.3s ease;
-}
-
-
-.G   { color: #4285F4; }
-.o1  { color: #EA4335; }
-.o2  { color: #FBBC05; }
-.g   { color: #34A853; }
-.l   { color: #4285F4; }
-.e   { color: #EA4335; }
-
 .search-box {
   display: flex;
   width: 90%;
@@ -79,11 +58,6 @@ h2 {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   transition: all 0.4s ease;
-}
-
-.search-box:hover {
-  box-shadow: 0 0 15px rgba(26, 115, 232, 0.6);
-  transform: scale(1.02);
 }
 
 body.dark .search-box {
@@ -125,6 +99,25 @@ body.dark .search-box input::placeholder {
   background-color: #0c56d0;
 }
 
+.google-word {
+  display: inline-flex;
+  margin-left: 10px;
+  align-items: baseline;
+}
+
+.google-word span {
+  font-weight: bold;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  line-height: 1;
+}
+
+.G   { color: #4285F4; }
+.o1  { color: #EA4335; }
+.o2  { color: #FBBC05; }
+.g   { color: #34A853; }
+.l   { color: #4285F4; }
+.e   { color: #EA4335; }
+
 .result-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -134,7 +127,6 @@ body.dark .search-box input::placeholder {
   margin-top: 20px;
   padding: 10px;
 }
-
 
 .result-box {
   background: white;
@@ -164,9 +156,6 @@ body.dark .search-box input::placeholder {
   font-size: 0.95rem;
   color: #333;
   min-height: 48px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 body.dark .result-box {
@@ -181,6 +170,7 @@ body.dark .result-box img {
 body.dark .result-box p {
   color: #eee;
 }
+
 
 /* Pagination */
 .pagination-controls {
@@ -224,21 +214,4 @@ body.dark .pagination-controls button:disabled {
 #pageNumber {
   font-weight: bold;
   font-size: 1rem;
-}
-
-@media (max-width: 480px) {
-  .search-box input {
-    padding: 12px 16px;
-    font-size: 0.95rem;
-  }
-
-  .search-box button {
-    padding: 0 16px;
-    font-size: 1rem;
-  }
-
-  .pagination-controls button {
-    min-width: 80px;
-    font-size: 0.85rem;
-  }
 }

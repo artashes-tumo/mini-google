@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const input = document.querySelector('.search-box input');
   const resultContainer = document.querySelector('.result-container');
 
-
+  // Pagination
   const prevBtn = document.getElementById('prevPage');
   const nextBtn = document.getElementById('nextPage');
   const pageNumber = document.getElementById('pageNumber');
@@ -13,15 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentPage = 1;
   let totalPages = 1;
 
-  // Theme persistence
-  if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark');
-  }
-
   btn.onclick = () => {
     document.body.classList.toggle("dark");
-    const isDark = document.body.classList.contains("dark");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
   };
 
   function clearResults() {
@@ -47,8 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+
   async function doSearch(page = 1) {
     const query = input.value.trim().toLowerCase();
+
     if (!query) {
       alert('Please enter something to search.');
       return;
@@ -57,6 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
     currentQuery = query;
     currentPage = page;
 
+    if (page === 1) {
+      clearResults();
+    }
 
     const url = `https://pixabay.com/api/?key=51175945-3a453382a3779e2c97686ca48&q=${encodeURIComponent(query)}&image_type=photo&per_page=12&page=${page}`;
 
@@ -66,10 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const filtered = data.hits.map(hit => ({
         image: hit.webformatURL,
-        description: hit.tags || `Photo by ${hit.user}`,
+        description: hit.tags || 'No description',
       }));
 
       showResults(filtered);
+
       totalPages = Math.ceil(data.totalHits / 12);
       updatePaginationButtons();
       updatePageNumber();
@@ -78,10 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
         resultContainer.innerHTML = '<p style="grid-column: 1/-1; text-align:center;">No results found.</p>';
       }
     } catch (error) {
-      loader.style.display = 'none';
       console.error('Search failed:', error);
     }
   }
+
 
   function updatePaginationButtons() {
     prevBtn.disabled = currentPage <= 1;
@@ -110,4 +109,5 @@ document.addEventListener('DOMContentLoaded', () => {
       doSearch(currentPage + 1);
     }
   });
+
 });
